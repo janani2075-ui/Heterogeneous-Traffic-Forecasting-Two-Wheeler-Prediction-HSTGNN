@@ -1,5 +1,3 @@
-# Heterogeneous-Traffic-Forecasting-Two-Wheeler-Prediction-HSTGNN
-MSc Data Science dissertation exploring heterogeneous traffic forecasting using graph neural networks and the PEMS08 dataset
 # Heterogeneous Traffic Forecasting Using HSTGNN
 
 ### Modelling Heterogeneous Traffic Flows: A Spatial–Temporal Graph Attention Network for Predicting Two-Wheeler and Motorcycle Congestion Dynamics
