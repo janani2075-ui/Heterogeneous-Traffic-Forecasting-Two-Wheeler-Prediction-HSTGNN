@@ -1,0 +1,3 @@
+# HSTGNN Research Dependencies
+# Python package requirements will be verified against
+# the model implementation and dissertation notebook.
