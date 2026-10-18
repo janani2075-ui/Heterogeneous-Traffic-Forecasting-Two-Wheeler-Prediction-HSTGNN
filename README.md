@@ -1,341 +1,437 @@
-# HSTGNN | Heterogeneous Traffic Forecasting
+<div align="center">
 
-### Modelling Heterogeneous Traffic Flows: A Spatial–Temporal Graph Attention Network for Predicting Two-Wheeler and Motorcycle Congestion Dynamics
+# HSTGNN
+## Heterogeneous Traffic Forecasting Using Spatial–Temporal Graph Neural Networks
 
-![Research](https://img.shields.io/badge/Project-MSc%20Data%20Science-blue)
-![Python](https://img.shields.io/badge/Language-Python-3776AB)
-![Model](https://img.shields.io/badge/Model-HSTGNN-purple)
-![Dataset](https://img.shields.io/badge/Dataset-PEMS08-green)
-![Status](https://img.shields.io/badge/Status-Research%20Completed-success)
-![License](https://img.shields.io/badge/License-Apache%202.0-orange)
+### Predicting Two-Wheeler and Motorcycle-Related Congestion Dynamics
 
----
+**MSc Data Science Dissertation | University of Surrey**
 
-## 1. Project Overview
+![Python](https://img.shields.io/badge/Python-Research%20Implementation-3776AB?logo=python&logoColor=white)
+![Deep Learning](https://img.shields.io/badge/Deep%20Learning-HSTGNN-7952B3)
+![Dataset](https://img.shields.io/badge/Dataset-PEMS08-00897B)
+![Forecasting](https://img.shields.io/badge/Forecasting-12%20Horizons-1565C0)
+![Research](https://img.shields.io/badge/Research-MSc%20Dissertation-455A64)
+![License](https://img.shields.io/badge/License-Apache%202.0-D22128)
 
-This repository presents my MSc Data Science dissertation research conducted at the **University of Surrey**.
+**Researcher:** Janani Veerakumar
 
-The project investigates heterogeneous traffic forecasting using a **Hybrid Spatial–Temporal Graph Neural Network (HSTGNN)**, with a particular focus on two-wheeler and motorcycle-related traffic characteristics.
+*Beyond Predictions: What Data Reveals, What Models Miss & What Decisions Need.*
 
-The research extends an existing HSTGNN forecasting implementation by introducing a synthetic two-wheeler-related feature and evaluating its effect on multi-horizon traffic prediction using the PEMS08 dataset.
-
-The aim is to investigate whether additional traffic-composition information can influence prediction accuracy and to understand the limitations of using synthetic features when real vehicle-class observations are unavailable.
-
-**Researcher:** Janani Veerakumar  
-**Programme:** MSc Data Science  
-**Institution:** University of Surrey  
-**Research Area:** Graph Neural Networks, Deep Learning and Traffic Forecasting
+</div>
 
 ---
 
-## 2. Problem Statement
+## 01 | Research Overview
 
-### The Research Challenge
+Urban traffic networks exhibit complex relationships across locations and time. Accurate forecasting requires models capable of learning these spatial and temporal dependencies while accounting for variations in traffic conditions.
 
-Traffic forecasting is challenging because traffic conditions change across locations and time periods.
+This research investigates **heterogeneous traffic forecasting through a Hybrid Spatial–Temporal Graph Neural Network (HSTGNN)**.
 
-Forecasting models need to account for:
+The study focuses on the influence of traffic-composition information on forecasting behaviour, with particular attention to two-wheeler-related characteristics.
 
-- **Spatial dependencies:** Traffic conditions at one sensor location may influence other locations.
-- **Temporal dependencies:** Historical traffic measurements affect future traffic patterns.
-- **Traffic heterogeneity:** Different vehicle types can contribute differently to traffic behaviour.
-- **Data limitations:** Vehicle-class-specific measurements may not be available.
+Using the **PEMS08 traffic dataset**, the research combines graph-based traffic representation, temporal forecasting and synthetic feature engineering to investigate prediction accuracy across multiple forecasting horizons.
 
-### Research Question
+### Research Profile
 
-> Can a synthetic feature representing two-wheeler-related traffic characteristics improve the forecasting performance of an HSTGNN-based traffic prediction model?
-
----
-
-## 3. Research Objectives
-
-The primary objective of this research is to investigate how heterogeneous traffic characteristics influence spatial–temporal traffic forecasting using a Hybrid Spatial–Temporal Graph Neural Network (HSTGNN).
-
-### Key Research Objectives
-
-1. **Spatial–Temporal Traffic Analysis:** Investigate spatial relationships and temporal patterns across traffic sensor networks to understand congestion dynamics.
-
-2. **HSTGNN-Based Forecasting:** Implement and evaluate an HSTGNN-based forecasting framework for modelling complex traffic patterns.
-
-3. **Heterogeneous Feature Engineering:** Develop a synthetic two-wheeler-related traffic feature to investigate the influence of traffic-composition information on forecasting performance.
-
-4. **Comparative Model Evaluation:** Conduct experiments using standard and heterogeneous HSTGNN configurations to assess the impact of the additional feature.
-
-5. **Multi-Horizon Traffic Prediction:** Evaluate forecasting performance across 12 prediction horizons using the PEMS08 dataset.
-
-6. **Performance Analysis:** Assess model accuracy using MAE, RMSE, MAPE and WMAPE to identify improvements, trade-offs and limitations.
-
-### Research Aim
-
-> To investigate the potential of heterogeneous traffic feature engineering in spatial–temporal graph neural networks and evaluate its influence on multi-horizon traffic forecasting accuracy.
+| Category | Description |
+|:---|:---|
+| **Research Title** | Modelling Heterogeneous Traffic Flows: A Spatial–Temporal Graph Attention Network for Predicting Two-Wheeler and Motorcycle Congestion Dynamics |
+| **Researcher** | Janani Veerakumar |
+| **University** | University of Surrey |
+| **Programme** | MSc Data Science |
+| **Research Domain** | Intelligent Transportation Systems |
+| **Core Model** | HSTGNN |
+| **Dataset** | PEMS08 |
+| **Traffic Sensors** | 170 |
+| **Forecasting Horizons** | 12 |
+| **Implementation Language** | Python |
 
 ---
 
-## 4. Research Workflow Architecture
+## 02 | Problem Statement
 
-The following diagram illustrates the experimental workflow used in this research.
+### Understanding Heterogeneous Traffic Dynamics
+
+Traffic conditions are influenced by interactions between road segments, historical traffic behaviour and variations in traffic composition.
+
+Traditional traffic measurements may not explicitly describe how different vehicle categories contribute to congestion patterns.
+
+This creates a research challenge:
+
+> **How can heterogeneous traffic information be represented within a spatial–temporal graph forecasting framework, and what effect does that representation have on traffic prediction accuracy?**
+
+This research examines that question using an engineered two-wheeler-related feature and a multi-horizon HSTGNN forecasting framework.
+
+---
+
+## 03 | Research Objectives
+
+| Objective | Research Focus | Intended Outcome |
+|:---|:---|:---|
+| **01** | Spatial–temporal analysis | Investigate relationships between traffic locations and historical observations |
+| **02** | Graph-based forecasting | Apply HSTGNN modelling to traffic prediction |
+| **03** | Heterogeneous feature engineering | Develop a synthetic two-wheeler-related traffic feature |
+| **04** | Multi-horizon prediction | Evaluate traffic forecasting across 12 horizons |
+| **05** | Performance evaluation | Assess forecasting errors using MAE, RMSE, MAPE and WMAPE |
+| **06** | Research interpretation | Identify performance trade-offs, limitations and future opportunities |
+
+### Central Research Aim
+
+> To investigate how heterogeneous traffic feature engineering influences spatial–temporal graph neural network forecasting performance.
+
+---
+
+## 04 | HSTGNN Research Architecture
+
+### End-to-End Research Framework
+
+The research framework connects traffic observations, feature preparation, spatial–temporal modelling, multi-horizon forecasting and performance evaluation.
 
 ```mermaid
 flowchart TD
-    A["PEMS08 Traffic Dataset<br/>170 Traffic Sensors"] --> B["Data Preprocessing"]
+    A["PEMS08 Traffic Dataset<br/>170 Sensor Locations"]
 
-    B --> C["Traffic Feature Preparation"]
+    B["Traffic Data Preprocessing"]
 
-    C --> D["Baseline Configuration<br/>3 Input Features"]
-    C --> E["Extended Configuration<br/>4 Input Features"]
+    C["Traffic Feature Preparation"]
 
-    E --> F["Synthetic Two-Wheeler<br/>Feature Engineering"]
+    D["Heterogeneous Feature Engineering<br/>Synthetic Two-Wheeler Proxy"]
 
-    D --> G["Baseline HSTGNN Model"]
-    F --> H["Extended HSTGNN Model"]
+    E["Spatial–Temporal Traffic Representation"]
 
-    G --> I["12 Forecasting Horizons"]
-    H --> J["12 Forecasting Horizons"]
+    F["HSTGNN Forecasting Model"]
 
-    I --> K["Performance Evaluation"]
-    J --> K
+    G["Multi-Horizon Prediction<br/>12 Forecasting Horizons"]
 
-    K --> L["MAE | RMSE | MAPE | WMAPE"]
-    L --> M["Comparative Analysis<br/>Research Findings"]
+    H["Forecast Evaluation<br/>MAE · RMSE · MAPE · WMAPE"]
 
-    style A fill:#dbeafe,stroke:#2563eb,color:#111827
-    style D fill:#e0e7ff,stroke:#4f46e5,color:#111827
-    style E fill:#fef3c7,stroke:#d97706,color:#111827
-    style G fill:#e0e7ff,stroke:#4f46e5,color:#111827
-    style H fill:#fef3c7,stroke:#d97706,color:#111827
-    style M fill:#dcfce7,stroke:#16a34a,color:#111827
+    I["Performance Analysis<br/>Research Findings"]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+
+    style A fill:#DBEAFE,stroke:#2563EB,color:#111827
+    style D fill:#FEF3C7,stroke:#D97706,color:#111827
+    style F fill:#EDE9FE,stroke:#7C3AED,color:#111827
+    style G fill:#DCFCE7,stroke:#16A34A,color:#111827
+    style I fill:#DBEAFE,stroke:#2563EB,color:#111827
 ```
 
-**Note:** This diagram represents the experimental workflow rather than the internal neural-network layers.
+> **Architecture note:** This diagram describes the research workflow. The detailed internal neural-network architecture should be documented separately from the verified `model.py` implementation.
 
 ---
 
-## 5. How the Model Works
+## 05 | Dataset and Traffic Representation
 
-### Stage 1 — Traffic Data
+### PEMS08 Traffic Dataset
 
-The research uses the **PEMS08 dataset**, containing traffic measurements from 170 sensors.
+The research uses the **PEMS08 dataset**, containing traffic observations collected from a network of **170 traffic sensors**.
 
-These measurements provide historical traffic information for forecasting.
+These observations provide the historical information used to model traffic behaviour and forecast future conditions.
 
-### Stage 2 — Data Preprocessing
+### Dataset Overview
 
-Traffic observations are prepared for use in the forecasting model.
+| Property | Research Configuration |
+|:---|:---|
+| **Dataset** | PEMS08 |
+| **Sensor Network** | 170 traffic sensors |
+| **Application** | Traffic forecasting |
+| **Data Representation** | Traffic observations organised across sensors and time |
+| **Prediction Task** | Multi-horizon traffic forecasting |
+| **Forecasting Horizons** | 12 |
 
-The data is organised into historical input sequences and forecasting targets.
+### Traffic Feature Engineering
 
-### Stage 3 — Feature Engineering
+The research investigates heterogeneous traffic characteristics using an engineered two-wheeler-related feature.
 
-Two configurations are evaluated:
-
-| Configuration | Input Features | Description |
-|---|---:|---|
-| Baseline HSTGNN | 3 | Original traffic features |
-| Extended HSTGNN | 4 | Original features plus a synthetic two-wheeler proxy |
-
-The synthetic feature is calculated using:
+The feature is defined as:
 
 ```python
 two_wheeler_ratio = 0.15 + 0.45 * flow_norm
 ```
 
-**Important:** This feature is derived from normalised traffic flow. It is not a measured motorcycle count or a real observed vehicle-class ratio.
+Where `flow_norm` represents normalised traffic flow.
 
-### Stage 4 — Spatial–Temporal Modelling
+**Research interpretation:** The engineered feature is a synthetic proxy derived from traffic flow. It does not represent directly measured motorcycle counts or verified two-wheeler proportions.
 
-The HSTGNN framework models relationships across traffic sensor locations and historical time periods.
-
-- **Spatial modelling:** Represents relationships between traffic sensors.
-- **Temporal modelling:** Captures changes in traffic measurements over time.
-- **Graph-based modelling:** Uses a graph representation of the traffic network.
-- **Forecasting:** Estimates future traffic conditions using historical observations.
-
-### Stage 5 — Multi-Horizon Forecasting
-
-The model is evaluated across **12 forecasting horizons**.
-
-### Stage 6 — Evaluation
-
-The baseline and extended models are compared using:
-
-- **MAE:** Mean Absolute Error.
-- **RMSE:** Root Mean Squared Error.
-- **MAPE:** Mean Absolute Percentage Error.
-- **WMAPE:** Weighted Mean Absolute Percentage Error.
+This distinction is important when interpreting the model's forecasting results.
 
 ---
 
-### Stage 6 — Model Performance Evaluation
+## 06 | Model Implementation
 
-To investigate the influence of heterogeneous traffic features on forecasting accuracy, two HSTGNN configurations were evaluated using the PEMS08 dataset.
+### Python Implementation Structure
 
-#### Experimental Configurations
+The HSTGNN implementation is organised into components for data preparation, modelling, training, testing and supporting operations.
 
-| Research Component | Standard HSTGNN | Heterogeneous HSTGNN |
+| Component | Python Module | Function |
 |:---|:---|:---|
-| **Input Features** | 3 traffic features | 4 traffic features |
-| **Feature Engineering** | Standard traffic measurements | Includes a synthetic two-wheeler-related feature |
-| **Dataset** | PEMS08 | PEMS08 |
-| **Traffic Sensors** | 170 | 170 |
-| **Forecasting Horizons** | 12 | 12 |
-| **Evaluation Metrics** | MAE, RMSE, MAPE, WMAPE | MAE, RMSE, MAPE, WMAPE |
-| **Research Purpose** | Establish reference forecasting performance | Investigate the effect of heterogeneous traffic representation |
+| **Data Preparation** | `data_pre.py` | Prepares traffic observations and generates training, validation and testing datasets |
+| **Model Definition** | `model.py` | Contains the HSTGNN model implementation |
+| **Training** | `train.py` | Supports the model training process |
+| **Testing** | `test.py` | Supports forecasting evaluation |
+| **Optimisation** | `ranger21.py` | Contains Ranger21 optimisation functionality |
+| **Utilities** | `util.py` | Provides supporting implementation functions |
 
-#### Model Evaluation Workflow
+### Implementation Workflow
 
 ```mermaid
 flowchart TD
-    A["PEMS08 Traffic Dataset"] --> B["Traffic Feature Preparation"]
+    A["Traffic Data<br/>PEMS08"]
 
-    B --> C["Standard HSTGNN<br/>3 Input Features"]
-    B --> D["Heterogeneous HSTGNN<br/>4 Input Features"]
+    B["Data Preparation<br/>data_pre.py"]
 
-    C --> E["12-Horizon Traffic Forecasting"]
-    D --> F["12-Horizon Traffic Forecasting"]
+    C["Model Definition<br/>model.py"]
 
-    E --> G["Performance Evaluation"]
+    D["Model Training<br/>train.py"]
+
+    E["Model Testing<br/>test.py"]
+
+    F["Forecast Evaluation"]
+
+    G["Research Findings"]
+
+    H["Optimisation<br/>ranger21.py"]
+
+    I["Utilities<br/>util.py"]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
     F --> G
 
-    G --> H["MAE | RMSE | MAPE | WMAPE"]
-    H --> I["Comparative Performance Analysis"]
+    H -.-> D
+    I -.-> D
+    I -.-> E
 
-    style C fill:#DBEAFE,stroke:#2563EB,color:#111827
+    style A fill:#DBEAFE,stroke:#2563EB,color:#111827
+    style C fill:#EDE9FE,stroke:#7C3AED,color:#111827
     style D fill:#DCFCE7,stroke:#16A34A,color:#111827
-    style I fill:#FEF3C7,stroke:#D97706,color:#111827
+    style F fill:#FEF3C7,stroke:#D97706,color:#111827
 ```
 
-#### Evaluation Metrics
+The module names above describe the HSTGNN implementation structure. Files should be linked here once the corresponding code has been added to this repository.
 
-| Metric | Full Form | Evaluation Purpose |
+### Data Preparation
+
+The preprocessing stage generates datasets for:
+
+- Training
+- Validation
+- Testing
+
+Prepared data is saved in compressed NumPy (`.npz`) format for subsequent modelling operations.
+
+---
+
+## 07 | Forecasting and Evaluation
+
+### Multi-Horizon Forecasting
+
+The research evaluates traffic predictions across **12 forecasting horizons**.
+
+The forecasting framework investigates how historical traffic information can support predictions of future traffic conditions across the sensor network.
+
+### Evaluation Metrics
+
+| Metric | Full Name | Evaluation Focus |
 |:---|:---|:---|
-| **MAE** | Mean Absolute Error | Measures average absolute prediction error |
-| **RMSE** | Root Mean Squared Error | Places greater emphasis on larger prediction errors |
-| **MAPE** | Mean Absolute Percentage Error | Measures prediction errors relative to actual values |
-| **WMAPE** | Weighted Mean Absolute Percentage Error | Measures total absolute error relative to total observed values |
+| **MAE** | Mean Absolute Error | Average magnitude of forecasting errors |
+| **RMSE** | Root Mean Squared Error | Sensitivity to larger prediction errors |
+| **MAPE** | Mean Absolute Percentage Error | Percentage-based prediction error |
+| **WMAPE** | Weighted Mean Absolute Percentage Error | Error relative to the total observed traffic values |
 
-**Evaluation Objective:** Determine whether introducing a synthetic two-wheeler-related feature improves forecasting performance and identify trade-offs across different error metrics.
----
-
-## 7. Research Contributions
-
-This research investigates how heterogeneous traffic characteristics can be incorporated into spatial–temporal graph-based traffic forecasting.
-
-The key contributions of this study include:
-
-- Designing an experimental framework to investigate heterogeneous traffic representation.
-- Developing a synthetic two-wheeler-related feature to examine traffic-composition effects.
-- Implementing and evaluating standard and heterogeneous HSTGNN configurations.
-- Conducting multi-horizon traffic forecasting experiments using the PEMS08 dataset.
-- Evaluating model performance using MAE, RMSE, MAPE and WMAPE.
-- Identifying the strengths, limitations and potential applications of heterogeneous traffic feature engineering.
-
-The research demonstrates how additional traffic-related features can influence prediction behaviour and provides insights for further investigation into vehicle-aware traffic forecasting.
+Lower values indicate better performance for these error metrics.
 
 ---
 
-## 8. Technologies and Skills Demonstrated
+## 08 | Experimental Findings
 
-| Area | Technologies and Concepts |
-|---|---|
-| Programming | Python |
-| Deep Learning | Neural-network-based traffic forecasting |
-| Model | HSTGNN |
-| Graph Learning | Spatial–temporal graph modelling |
-| Feature Engineering | Synthetic traffic-composition feature |
-| Dataset | PEMS08 |
-| Model Evaluation | MAE, RMSE, MAPE and WMAPE |
-| Research | Experimental comparison and critical evaluation |
+### Forecasting Performance
 
----
+The dissertation investigated the effect of introducing the engineered heterogeneous traffic feature.
 
-## 9. Research Limitations
+The following table presents the recorded experimental results.
 
-1. **Synthetic vehicle feature:** The additional feature does not represent directly measured motorcycle traffic.
-2. **Mixed forecasting performance:** The extended model improved MAPE but not the other three metrics.
-3. **Dataset scope:** The experiments were conducted using PEMS08.
-4. **Vehicle-specific validation:** The results do not demonstrate motorcycle-specific prediction accuracy.
+| Evaluation Metric | Three-Feature Configuration | Four-Feature Configuration |
+|:---|---:|---:|
+| **MAE** | **14.3300** | 14.3466 |
+| **RMSE** | **23.2007** | 23.4144 |
+| **MAPE** | 0.1024 | **0.0966** |
+| **WMAPE** | **0.0617** | 0.0618 |
 
----
+### Performance Interpretation
 
-## 10. Future Research
+The four-feature configuration achieved an approximately **5.66% relative reduction in MAPE**.
 
-Potential future improvements include:
+However, the three-feature configuration recorded lower MAE, RMSE and WMAPE values.
 
-- Integrating real vehicle-class-specific traffic observations.
-- Evaluating additional traffic datasets.
-- Comparing alternative feature-engineering methods.
-- Investigating performance across forecasting horizons.
-- Testing whether more representative traffic-composition data improves overall accuracy.
+The findings indicate that heterogeneous feature engineering can influence forecasting behaviour, although the synthetic feature did not produce consistent improvements across every metric.
 
-These are proposed directions rather than completed experiments.
+### Evaluation Summary
 
----
+```mermaid
+flowchart TD
+    A["Experimental Evaluation"]
 
-## 11. Research Notebook
+    B["Improved MAPE<br/>Four-Feature Configuration"]
 
-The research was developed using Google Colab.
+    C["Lower MAE, RMSE and WMAPE<br/>Three-Feature Configuration"]
 
-**Google Colab Notebook:**
+    D["Key Finding<br/>Performance Depends on the Evaluation Metric"]
 
-[View the Research Notebook](https://colab.research.google.com/drive/1tSGnQyi8Ck3bDB6oh2hdu6AVGZ6O8cng?usp=sharing)
+    A --> B
+    A --> C
+    B --> D
+    C --> D
 
-Execution instructions and dependencies will be added after the notebook and required files have been reviewed.
+    style A fill:#DBEAFE,stroke:#2563EB,color:#111827
+    style B fill:#DCFCE7,stroke:#16A34A,color:#111827
+    style C fill:#FEF3C7,stroke:#D97706,color:#111827
+    style D fill:#EDE9FE,stroke:#7C3AED,color:#111827
+```
 
 ---
 
-## 12. Research Authorship
+## 09 | Research Contributions
 
-**Researcher:** Janani Veerakumar  
-**Programme:** MSc Data Science  
-**Institution:** University of Surrey
+This dissertation investigates the role of heterogeneous traffic information in graph-based traffic forecasting.
 
-**Dissertation Title:**
+### Key Contributions
+
+| Research Area | Contribution |
+|:---|:---|
+| **Traffic Forecasting** | Investigated spatial–temporal forecasting using HSTGNN |
+| **Feature Engineering** | Developed a synthetic two-wheeler-related traffic proxy |
+| **Experimental Research** | Evaluated the influence of heterogeneous traffic information |
+| **Forecast Evaluation** | Analysed performance across four forecasting metrics |
+| **Research Interpretation** | Identified trade-offs between percentage-based and absolute error measures |
+| **Future Development** | Established directions for vehicle-aware traffic forecasting research |
+
+### Research Significance
+
+The study highlights the importance of evaluating engineered features critically rather than assuming that additional information automatically improves forecasting performance.
+
+---
+
+## 10 | Technologies and Research Skills
+
+| Category | Technologies and Concepts |
+|:---|:---|
+| **Programming** | Python |
+| **Machine Learning** | Deep learning and predictive modelling |
+| **Graph Learning** | Spatial–temporal graph neural networks |
+| **Traffic Analytics** | Sensor-based traffic forecasting |
+| **Feature Engineering** | Synthetic traffic-composition representation |
+| **Data Processing** | Traffic preprocessing and dataset preparation |
+| **Evaluation** | MAE, RMSE, MAPE and WMAPE |
+| **Research Methods** | Experimental comparison and critical analysis |
+| **Development Environment** | Google Colab |
+
+---
+
+## 11 | Research Limitations
+
+The study identifies several limitations that are important for interpreting the findings.
+
+| Limitation | Research Implication |
+|:---|:---|
+| **Synthetic feature** | The engineered two-wheeler proxy is not a directly observed vehicle-class measurement |
+| **Mixed performance outcomes** | Improvement in MAPE did not correspond to improvements across all metrics |
+| **Dataset scope** | Findings are based on experiments using PEMS08 |
+| **Vehicle-specific interpretation** | Results cannot establish accuracy for motorcycle-only traffic forecasting |
+
+These limitations inform the future development of more representative heterogeneous traffic forecasting systems.
+
+---
+
+## 12 | Future Research Directions
+
+Future research could investigate:
+
+1. Integration of real vehicle-class-specific traffic measurements.
+2. Evaluation using additional traffic datasets.
+3. Alternative approaches to heterogeneous feature engineering.
+4. Detailed analysis of performance across individual forecasting horizons.
+5. Improved representation of vehicle-specific congestion behaviour.
+
+These directions are proposed opportunities for further research and are not presented as completed experiments.
+
+---
+
+## 13 | Research Notebook
+
+### Google Colab
+
+The dissertation experiments were developed using Google Colab.
+
+**Research Notebook:**
+
+[Open the HSTGNN Research Notebook](https://colab.research.google.com/drive/1tSGnQyi8Ck3bDB6oh2hdu6AVGZ6O8cng?usp=sharing)
+
+The notebook and supporting files will be organised within the repository to improve accessibility and reproducibility.
+
+Detailed installation and execution instructions will be added after the complete implementation has been reviewed.
+
+---
+
+## 14 | Research Authorship
+
+**Janani Veerakumar**  
+MSc Data Science  
+University of Surrey
+
+**Dissertation:**
 
 *Modelling Heterogeneous Traffic Flows: A Spatial–Temporal Graph Attention Network for Predicting Two-Wheeler and Motorcycle Congestion Dynamics*
 
-This repository documents my dissertation research, including the experimental methodology, heterogeneous traffic feature engineering, forecasting evaluation and research findings.
+This repository presents my dissertation research, including the research methodology, heterogeneous feature engineering, experimental evaluation, analysis and findings.
 
 ---
 
-## 13. Copyright and Licence
+## 15 | Licence
 
-**Copyright © 2026 Janani Veerakumar.**
+**Copyright © 2026 Janani Veerakumar — original contributions.**
 
-Original software and research materials that I own and am entitled to license are made available under the **Apache License, Version 2.0**, where applicable.
+Original software in this repository that I own and have the right to license is made available under the **Apache License, Version 2.0**.
 
-See the [LICENSE](LICENSE) file for licensing terms.
+See the [LICENSE](LICENSE) file for the applicable terms.
 
-External datasets and other materials subject to separate rights remain governed by their respective terms.
-
----
-
-## 13. Copyright and Licence
-
-**Copyright © 2026 Janani Veerakumar — original contributions only.**
-
-Original software contributions in this repository that are owned by Janani Veerakumar and available for licensing are provided under the **Apache License, Version 2.0**, as specified in the repository's `LICENSE` file.
-
-The licence does not automatically apply to:
-
-- Third-party HSTGNN source code.
-- External datasets, including PEMS08.
-- Third-party research materials or figures.
-- Content governed by separate copyright or institutional agreements.
-
-Redistribution of third-party code requires permission under its original licence or another valid authorisation.
-
-**Licence:** Apache License 2.0
+External datasets and any separately licensed components remain subject to their respective terms.
 
 ---
 
-## 14. Project Status
+## 16 | References
 
-**Research status:** MSc dissertation completed.
+### HSTGNN Implementation
 
-**Repository status:** Research documentation and reproducibility materials are being organised for public presentation.
+[HSTGNN — STGTraffic GitHub Repository](https://github.com/STGTraffic/HSTGNN)
+
+### Research Dataset
+
+PEMS08 traffic dataset.
+
+### Research Environment
+
+[Google Colab Research Notebook](https://colab.research.google.com/drive/1tSGnQyi8Ck3bDB6oh2hdu6AVGZ6O8cng?usp=sharing)
 
 ---
 
-### Research Philosophy
+<div align="center">
 
-**Beyond Predictions: What Data Reveals, What Models Miss & What Decisions Need.**
+### Beyond Predictions
+
+**What Data Reveals · What Models Miss · What Decisions Need**
+
+**HSTGNN | MSc Data Science Research | University of Surrey**
+
+</div>
